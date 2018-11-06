@@ -81,5 +81,3 @@ class Controller:
 
     	jsonD = dumps(json, indent=4)
     	return jsonD
-
-# git bug

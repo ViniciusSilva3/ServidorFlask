@@ -83,20 +83,3 @@ class Controller:
     	return jsonD
 
 # git bug
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
