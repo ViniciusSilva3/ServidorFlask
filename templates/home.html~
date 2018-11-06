@@ -8,7 +8,10 @@
         <h2> Cleaner </h2>
         <a href="/home/cleaner"> Selecione o Cleaner </a>
         
-        <h2> Stemmer-StopWords </h2>
+        <h2> Stemmer </h2>
+        <a href="/home/stopwstemmer"> Selecione o Stemmer </a>
+        
+        <h2> StopWords </h2>
         <a href="/home/stopwstemmer"> Selecione o StopWords </a>
 
         <h2> Gerar codigo </h2>
