@@ -1,0 +1,5 @@
+	var preprocessor = {
+		 "removeaccents" : "False",
+		 "remove_alpha_numeric" : "False",
+		 "max_word_lenght" : "3"
+};
