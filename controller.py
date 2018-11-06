@@ -1,3 +1,4 @@
+from json import dumps
 # funcoes controladoras
 
 class Controller:
@@ -32,6 +33,54 @@ class Controller:
         #talvez seja mais facil ja fazer na implementacao junto com o professor
         a = 1          
 
+    def verificaS(string):
+    	if (string==''):
+    		return None
+    	else:
+    		return string
+
+    def splitWords(flagStop, string):
+    	'''
+    	Ainda não implementado. Função que recebe a string da caixa de texto da página e retorna na forma de lista
+    	Argumento: string referente ao que foi digitado na caixa, separadas por vírgula e/ou espaço em branco
+    	Retorno: lista de palavras
+    	'''
+    	#if flagStop:
+    	if string != '':
+    		lista = string.replace(' ', '')
+    		lista = string.split(',')
+    		return lista
+    	else:
+    		return None
+
+    def geraArquivo(flagStop, flagAc, flagToken, flagAlp, flagStem, maxWord=None, lan=None, lista=None):
+    	json = {
+    		"lang":"portuguese",
+    		"stopword_list":"None",
+    		"remove_accents":False,
+    		"tokenize":False,
+
+    		"remove_alpha_numeric":True,
+    		"max_word_length":2,
+
+    		"stemmer_obj":"None",
+    		"fit_reuse":False
+    	}
+    	if lan != None:
+    		if lan == 'portuguese':
+    			json['lang'] = lan
+    		elif lan == 'english':
+    			json['lang'] = lan
+    	if lista != None:
+    		json['stopword_list'] = lista
+    	json['remove_accents'] = flagAc
+    	json['tokenize'] = flagToken
+    	json['remove_alpha_numeric'] = flagAlp
+    	if maxWord != None:
+    		json['max_word_length'] = maxWord
+
+    	jsonD = dumps(json, indent=4)
+    	return jsonD
 
 # git bug
 

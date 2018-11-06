@@ -1,6 +1,7 @@
 from flask import Flask, send_file, request, flash, redirect
 from flask import render_template
 from forms import cleanerForm
+from forms import SoftwareForm
 from controller import Controller
 
 control = Controller()
@@ -36,10 +37,29 @@ def home():
 @app.route("/home/envio")
 def envio():
     if control.cleanerAtivo == 0: 
-        control.geraDefault()
+        control.geraDefaultCleaner()
     #devem ser feitas as verificacoes para os outros
 
     return render_template("envio.html")
+
+#route para o stop word e o stemmer
+@app.route("/home/stopwstemmer", methods=['POST', 'GET'])
+def stopwstemmer():
+	form = SoftwareForm()
+	if form.is_submitted():
+		words = request.form['textStop']
+		maxW = request.form['max_word']
+		lang = request.form['lang']
+		listaWords = control.splitWords(form.stopWord.data, words)
+		maxW = control.verificaS(maxW)
+		lang = control.verificaS(lang)
+		json = control.geraArquivo(form.stopWord.data, form.rem_ac.data, form.tokenizer.data, form.rem_alp.data, form.stemizer.data, maxW, lang, listaWords)
+		return Response(json, mimetype="text/json", headers={"Content-disposition":"attachment; filename=parametros.json"})
+		#flash('Arquivo disponibilizado para download' , 'success')
+		#return (render_template('form.html', form=form, string=listaWords), Response(listaWords, mimetype="text/json", headers={"Content-disposition":"attachment; filename=parametros.json"}) )
+		#return redirect(url_for('home'))
+		#return render_template('form.html', form=form, string=listaWords)
+	return render_template('form.html', form=form)
 
 #falta o route 'download'
 

@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+            	<legend class="border-bottom mb-4">Insira StopWords na caixa de texto abaixo separadas por vírgula</legend>
+                <div class="form-group">     
+                	{% if string %}
+                		<textarea name="textStop" rows="10" cols="120">Suas stop-words são: {{ string }}</textarea>
+                	{% else %}
+                		<textarea name="textStop" rows="10" cols="120"></textarea>
+                	{% endif %}
+                </div>
+                <!--
+					<div class="form-check">
+                    {{ form.stopWord(class="form-check-input") }}
+                    {{ form.stopWord.label(class="form-check-label") }}
+                </div>
+                -->
+                <div class="form-group">
+                    {{ form.lang.label(class="form-control-label", size=250) }}
+                    {{ form.lang(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.max_word.label(class="form-control-label", size=250) }}
+                    {{ form.max_word(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-check">
+                    {{ form.rem_ac(class="form-check-input") }}
+                    {{ form.rem_ac.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.rem_alp(class="form-check-input") }}
+                    {{ form.rem_alp.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.tokenizer(class="form-check-input") }}
+                    {{ form.tokenizer.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.stemizer(class="form-check-input") }}
+                    {{ form.stemizer.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
