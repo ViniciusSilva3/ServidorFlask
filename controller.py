@@ -55,14 +55,14 @@ class Controller:
     def geraArquivo(self, flagAc, flagAlp, flagToken, flagStem, maxWord=None, lan=None, lista=None):
     	json = {
     		"lang":"portuguese",
-    		"stopword_list":"None",
+    		"stopword_list":None,
     		"remove_accents":True,
     		"tokenize":False,
 
     		"remove_alpha_numeric":True,
     		"max_word_length":2,
 
-    		"stemmer_obj":"None",
+    		"stemmer_obj":None,
     		"fit_reuse":False
     	}
     	if lan != None:
